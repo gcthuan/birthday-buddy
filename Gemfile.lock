@@ -29,9 +29,6 @@ GEM
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
     builder (3.2.2)
-    bullet (4.13.2)
-      activesupport (>= 3.0.0)
-      uniform_notifier (>= 1.6.0)
     celluloid (0.16.0)
       timers (~> 4.0.0)
     childprocess (0.5.3)
@@ -149,13 +146,11 @@ GEM
       polyglot (>= 0.3.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    uniform_notifier (1.6.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  bullet
   database_cleaner
   factory_girl_rails (= 4.2.1)
   guard-rspec (= 2.5.0)
