@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def show
-  	@user = User.find(user_params)
+  	@user = User.find(params[:id])
 
   	render json: @user
   end
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
   def create
   	@user = User.new(user_params)
-
+    @user.update_attribute :dob, Date.new(@user.year, @user.month, @user.day)
   	if @user.save
   	  render json: @user, status: :created
   	else
@@ -46,6 +46,24 @@ class UsersController < ApplicationController
   	if @user.destroy
   	  head :no_content
   	end
+  end
+
+  def find_users_with_same_zodiac
+    @user = User.find(params[:id])
+    if @user
+      render json: @user.same_zodiac
+    else
+      render json: @user.errors
+    end
+  end
+
+  def find_users_with_same_day_month
+    @user = User.find(params[:id])
+    if @user
+      render json: @user.same_day_month
+    else
+      render json: @user.errors
+    end
   end
 
   def user_params

@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141101151905) do
+ActiveRecord::Schema.define(version: 20141127101755) do
+
+  create_table "friendships", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "friend_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "facebook_id"
@@ -24,6 +31,10 @@ ActiveRecord::Schema.define(version: 20141101151905) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "is_activated"
+    t.date     "dob"
+    t.integer  "zodiac_sign_id"
   end
+
+  add_index "users", ["zodiac_sign_id"], name: "index_users_on_zodiac_sign_id"
 
 end

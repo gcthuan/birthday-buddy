@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   
   root 'api/users#index'
 
+  match '/api/users/find_same_zodiac/:id', to: 'api/users#find_users_with_same_zodiac', via: 'get'
+  match '/api/users/find_same_day_month/:id', to: 'api/users#find_users_with_same_day_month', via: 'get'
+  
   namespace :api, {default: 'json'} do
     resources :users
   end
